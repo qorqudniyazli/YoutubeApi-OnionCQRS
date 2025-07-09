@@ -1,4 +1,5 @@
 using YoutubeApi.Persistence;
+using YoutubeApi.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ builder.Configuration
     .AddEnvironmentVariables();
 
 builder.Services.AddPersistance(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
