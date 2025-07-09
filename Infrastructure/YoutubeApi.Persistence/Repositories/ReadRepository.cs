@@ -72,7 +72,4 @@ public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase
         return  Table.Where(predicate);
     }
 
-
-
-
 }
