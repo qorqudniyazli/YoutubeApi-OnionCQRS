@@ -20,6 +20,7 @@ public static class Registration
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
+            services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
         });
     }
 }
