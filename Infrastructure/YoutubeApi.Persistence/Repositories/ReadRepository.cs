@@ -51,7 +51,7 @@ public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase
         if (!enableTracking) queryable = queryable.AsNoTracking();
         if (include is not null) queryable = include(queryable);
         
-        //queryable.Where(predicate);
+        queryable = queryable.Where(predicate);
            
         return await queryable.FirstOrDefaultAsync();
     }
