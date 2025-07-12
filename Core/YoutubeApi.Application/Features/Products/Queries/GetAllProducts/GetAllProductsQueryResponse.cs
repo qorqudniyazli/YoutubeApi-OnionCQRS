@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YoutubeApi.Application.DTOs;
+﻿using YoutubeApi.Application.DTOs;
 
 namespace YoutubeApi.Application.Features.Products.Queries.GetAllProducts;
 
