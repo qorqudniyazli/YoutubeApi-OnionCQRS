@@ -1,9 +1,4 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace YoutubeApi.Application.Features.Products.Command.CreateProduct;
 
@@ -18,11 +13,11 @@ public class CreateProductCommandValidator : AbstractValidator<CreateProductComm
         RuleFor(x => x.Description)
             .NotEmpty()
             .WithName("Açıqlama");
-        
+
         RuleFor(x => x.BrandId)
             .GreaterThan(0)
             .WithName("Marka");
-        
+
         RuleFor(x => x.Price)
             .GreaterThan(0)
             .WithName("Qiymət");
