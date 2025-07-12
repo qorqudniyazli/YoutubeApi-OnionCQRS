@@ -10,7 +10,7 @@ using YoutubeApi.Domain.Entities;
 
 namespace YoutubeApi.Application.Features.Products.Command.UpdateProduct;
 
-public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandRequest>
+public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandRequest, Unit>
 {
     private readonly IMapper mapper;
     private readonly IUnitOfWork unitOfWork;
@@ -21,7 +21,7 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandR
         this.mapper = mapper;
     }
 
-    public async Task Handle(UpdateProductCommandRequest request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(UpdateProductCommandRequest request, CancellationToken cancellationToken)
     {
         var product = await unitOfWork.GetReadRepository<Product>().GetAsync(x => x.Id == request.Id && !x.IsDeleted);
 
@@ -45,5 +45,7 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandR
 
         await unitOfWork.GetWriteRepository<Product>().UpdateAsync(map);
         await unitOfWork.SaveChangesAsync();
+
+        return Unit.Value;
     }
 }
