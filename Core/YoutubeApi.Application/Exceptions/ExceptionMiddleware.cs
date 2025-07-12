@@ -41,8 +41,7 @@ public class ExceptionMiddleware : IMiddleware
 
         List<string> errors = new()
         {
-            $"Xəta Mesajı : {exception.Message}",
-            $"Mesaj Açıqlaması : {exception.InnerException?.ToString()}"
+            $"Xəta Mesajı : {exception.Message}"
         };
 
         return  httpContext.Response.WriteAsync(new ExceptionModel
