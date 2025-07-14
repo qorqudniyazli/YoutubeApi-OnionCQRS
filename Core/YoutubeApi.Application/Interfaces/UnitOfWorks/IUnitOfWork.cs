@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YoutubeApi.Application.Interfaces.Repositories;
+﻿using YoutubeApi.Application.Interfaces.Repositories;
 using YoutubeApi.Domain.Common;
 
 namespace YoutubeApi.Application.Interfaces.UnitOfWorks;
@@ -14,4 +9,4 @@ public interface IUnitOfWork : IAsyncDisposable
     IWriteRepository<T> GetWriteRepository<T>() where T : class, IEntityBase, new();
     Task<int> SaveChangesAsync();
     int Save();
-}   
+}

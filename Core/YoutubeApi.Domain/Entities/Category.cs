@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YoutubeApi.Domain.Common;
+﻿using YoutubeApi.Domain.Common;
 
 namespace YoutubeApi.Domain.Entities;
 
-public class Category : EntityBase 
+public class Category : EntityBase
 {
     public Category()
     {
-        
+
     }
 
     public Category(int parentId, string name, int priorty)
@@ -22,7 +17,7 @@ public class Category : EntityBase
     }
     public int ParentId { get; set; }
     public string Name { get; set; }
-    public int Priorty { get; set; }   
-    public ICollection<Detail> Details { get; set; } 
-    public ICollection<ProductCategory> ProductCategories { get; set; } 
+    public int Priorty { get; set; }
+    public ICollection<Detail> Details { get; set; }
+    public ICollection<ProductCategory> ProductCategories { get; set; }
 }
