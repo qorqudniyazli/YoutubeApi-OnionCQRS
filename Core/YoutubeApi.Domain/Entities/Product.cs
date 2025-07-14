@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YoutubeApi.Domain.Common;
+﻿using YoutubeApi.Domain.Common;
 
 namespace YoutubeApi.Domain.Entities;
 public class Product : EntityBase
 {
     public Product()
     {
-        
+
     }
 
     public Product(string title, string description, int brandId, decimal price, decimal discount)

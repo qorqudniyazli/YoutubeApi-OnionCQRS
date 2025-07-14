@@ -1,7 +1,8 @@
-using YoutubeApi.Persistence;
 using YoutubeApi.Application;
-using YoutubeApi.Mapper;
 using YoutubeApi.Application.Exceptions;
+using YoutubeApi.Infrastucture;
+using YoutubeApi.Mapper;
+using YoutubeApi.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Configuration
     .AddEnvironmentVariables();
 
 builder.Services.AddPersistance(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddCustomMapper();
 

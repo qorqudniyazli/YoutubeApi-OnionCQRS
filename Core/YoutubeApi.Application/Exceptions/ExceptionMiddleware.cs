@@ -1,12 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
 using SendGrid.Helpers.Errors.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace YoutubeApi.Application.Exceptions;
 
@@ -19,8 +13,8 @@ public class ExceptionMiddleware : IMiddleware
             await next(httpContext);
         }
         catch (Exception ex)
-        { 
-            await HandleExceptionAsync(httpContext, ex);               
+        {
+            await HandleExceptionAsync(httpContext, ex);
         }
     }
 
@@ -30,7 +24,7 @@ public class ExceptionMiddleware : IMiddleware
         httpContext.Response.ContentType = "application/json";
         httpContext.Response.StatusCode = statusCode;
 
-        if(exception.GetType() == typeof(ValidationException))
+        if (exception.GetType() == typeof(ValidationException))
         {
             return httpContext.Response.WriteAsync(new ExceptionModel
             {
@@ -44,7 +38,7 @@ public class ExceptionMiddleware : IMiddleware
             $"Xəta Mesajı : {exception.Message}"
         };
 
-        return  httpContext.Response.WriteAsync(new ExceptionModel
+        return httpContext.Response.WriteAsync(new ExceptionModel
         {
             Errors = errors,
             StatusCode = statusCode

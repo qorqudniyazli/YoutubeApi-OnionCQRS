@@ -1,11 +1,6 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YoutubeApi.Domain.Entities;
 
 namespace YoutubeApi.Persistence.Configurations;
@@ -26,10 +21,6 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
                 Discount = 0.73m,
                 Price = 87.16m,
                 CreatedDate = new DateTime(2024, 1, 1),
-                //Title = faker.Commerce.ProductName(),
-                //Description = faker.Commerce.ProductDescription(),
-                //Discount = faker.Random.Decimal(0, 10),
-                //Price = faker.Finance.Amount(10, 1000),
                 IsDeleted = false
 
 
@@ -43,10 +34,6 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
                 Discount = 5.73m,
                 Price = 491.16m,
                 CreatedDate = new DateTime(2024, 1, 2),
-                //Title = faker.Commerce.ProductName(),
-                //Description = faker.Commerce.ProductDescription(),
-                //Discount = faker.Random.Decimal(0, 10),
-                //Price = faker.Finance.Amount(10, 1000),
                 IsDeleted = false
             }
         );

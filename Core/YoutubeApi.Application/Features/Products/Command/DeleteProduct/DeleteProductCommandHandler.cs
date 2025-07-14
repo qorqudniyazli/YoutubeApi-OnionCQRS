@@ -1,15 +1,10 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YoutubeApi.Application.Interfaces.UnitOfWorks;
 using YoutubeApi.Domain.Entities;
 
 namespace YoutubeApi.Application.Features.Products.Command.DeleteProduct;
 
-public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommandRequest , Unit>
+public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommandRequest, Unit>
 {
     private readonly IUnitOfWork unitOfWork;
 

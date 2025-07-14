@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using YoutubeApi.Application.Interfaces.Repositories;
 using YoutubeApi.Domain.Common;
 
@@ -24,9 +19,9 @@ public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase
     {
         IQueryable<T> queryable = Table;
         if (!enableTracking) queryable = queryable.AsNoTracking();
-        if(include is not null) queryable = include(queryable);
+        if (include is not null) queryable = include(queryable);
         if (predicate is not null) queryable = queryable.Where(predicate);
-        if (orderBy is not null) 
+        if (orderBy is not null)
             return await orderBy(queryable).ToListAsync();
 
         return await queryable.ToListAsync();
@@ -50,9 +45,9 @@ public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase
         IQueryable<T> queryable = Table;
         if (!enableTracking) queryable = queryable.AsNoTracking();
         if (include is not null) queryable = include(queryable);
-        
+
         queryable = queryable.Where(predicate);
-           
+
         return await queryable.FirstOrDefaultAsync();
     }
 
@@ -66,10 +61,10 @@ public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase
         return await Table.CountAsync();
     }
 
-    public  IQueryable<T> Find(Expression<Func<T, bool>> predicate, bool enableTracking = false)
+    public IQueryable<T> Find(Expression<Func<T, bool>> predicate, bool enableTracking = false)
     {
         if (!enableTracking) Table.AsNoTracking();
-        return  Table.Where(predicate);
+        return Table.Where(predicate);
     }
 
 }

@@ -15,7 +15,7 @@ public class Mapper : Application.Interfaces.AutoMapperInterface.IMapper
     public TDestination Map<TDestination, TSource>(TSource source, string? ignore = null)
     {
         Config<TDestination, TSource>(5, ignore);
-        return MapperContainer.Map<TSource, TDestination>(source);                   
+        return MapperContainer.Map<TSource, TDestination>(source);
     }
 
     public IList<TDestination> Map<TDestination, TSource>(IList<TSource> source, string? ignore = null)
