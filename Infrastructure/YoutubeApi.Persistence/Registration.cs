@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YoutubeApi.Application.Interfaces.Repositories;
 using YoutubeApi.Application.Interfaces.UnitOfWorks;
+using YoutubeApi.Domain.Entities;
 using YoutubeApi.Persistence.Repositories;
 using YoutubeApi.Persistence.UnitOfWorks;
 
@@ -27,5 +28,17 @@ public static class Registration
         services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+        services.AddIdentityCore<User>(options =>
+        {
+            options.SignIn.RequireConfirmedEmail = false;
+            options.Password.RequireDigit = false;
+            options.Password.RequiredLength = 2;
+            options.Password.RequireLowercase = false;
+            options.Password.RequireUppercase = false;
+            options.Password.RequireNonAlphanumeric = false;
+        })
+            .AddRoles<Role>()
+            .AddEntityFrameworkStores<AppDbContext>();
     }
 }
