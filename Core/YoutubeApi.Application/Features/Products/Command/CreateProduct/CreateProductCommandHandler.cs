@@ -1,18 +1,20 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
+using YoutubeApi.Application.Bases;
 using YoutubeApi.Application.Features.Products.Rules;
+using YoutubeApi.Application.Interfaces.AutoMapperInterface;
 using YoutubeApi.Application.Interfaces.UnitOfWorks;
 using YoutubeApi.Domain.Entities;
 
 namespace YoutubeApi.Application.Features.Products.Command.CreateProduct;
 
-public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, Unit>
+public class CreateProductCommandHandler : BaseHandler, IRequestHandler<CreateProductCommandRequest, Unit>
 {
-    private readonly IUnitOfWork unitOfWork;
     private readonly ProductRoles productRoles;
 
-    public CreateProductCommandHandler(IUnitOfWork unitOfWork, ProductRoles productRoles)
+    public CreateProductCommandHandler(ProductRoles productRoles, IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
     {
-        this.unitOfWork = unitOfWork;
+        
         this.productRoles = productRoles;
     }
     public async Task<Unit> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
