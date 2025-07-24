@@ -28,8 +28,7 @@ public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQueryReq
             item.Price -= (item.Price * item.Discount / 100);
 
 
-        //return map;
-        throw new Exception("xeta mesaji");
+        return map;
 
     }
 }
