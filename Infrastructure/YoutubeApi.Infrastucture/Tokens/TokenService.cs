@@ -60,8 +60,8 @@ public class TokenService : ITokenService
     {
         TokenValidationParameters tokenValidationParameters = new()
         {
-            ValidateIssuer = true,
-            ValidateAudience = true,
+            ValidateIssuer = false,
+            ValidateAudience = false,
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSettings.Secret)),
             ValidateLifetime = false,
