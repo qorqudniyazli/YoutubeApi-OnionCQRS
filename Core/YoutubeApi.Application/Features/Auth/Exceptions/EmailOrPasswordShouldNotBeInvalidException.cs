@@ -6,4 +6,3 @@ public class EmailOrPasswordShouldNotBeInvalidException : BaseExceptions
 {
     public EmailOrPasswordShouldNotBeInvalidException() : base("İstifadəçi adı və ya yanlışdır!") { }
 }
-
